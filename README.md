@@ -1,12 +1,6 @@
 # Backroads App
 
-[Working Application - Deployed](https://backroads-app.netlify.app/)
-
-- backroads-html - working html/css/javascript project (contains assets)
-- final(complete source code) - working react application
-  - navigate to the folder
-  - run 'npm install'
-  - once the dependencies are installed run 'npm start'
+[Working Application - Deployed](https://backroads-project-app.netlify.app/)
 
 #### Create New React App
 
@@ -73,43 +67,6 @@ function App() {
 export default App
 ```
 
-- remove
-  - remove logo.svg
-  - App.css
-
-#### Setup Structure
-
-- public/index.html
-
-  - change title
-  - copy/paste font-awesome link (from html project)
-
-- index.css
-
-  - copy/paste css (from html project - css/styles.css)
-  - error in line 209, just comment out for now
-
-```css
-@media screen and (min-width: 768px) {
-  /* .hero {
-    background: linear-gradient(rgb(44, 174, 186, 0.7), rgba(0, 0, 0, 0.7)),
-      url('../images/main.jpeg') center/cover no-repeat;
-  } */
-}
-```
-
-- src folder
-  - copy/paste images folder (from html project)
-  - move favicon.ico to public
-- App.js
-  - refactor to <React.Fragment>
-  - copy/paste all the content within body tags, up to <script> (index.html)
-  - select all "class" instances and refactor to "className" (CMD + D)
-  - fix the comment bug (remove or comment out)
-  - don't worry about - Using target="\_blank" without rel="noreferrer" warning,
-    will fix it later
-  - move README.md from final to current project
-
 #### Setup Components
 
 - in src create components folder
@@ -128,40 +85,6 @@ export default App
 - result is going to be the same, it's just easier to manage the code
 - again, it's just my preference to split up code in such way.
   You can split it up in any way that makes the most sense to you.
-
-#### Navbar
-
-- first let's fix the image (logo)
-  - setup import from images and update source
-
-```js
-// import
-import logo from '../images/logo.svg'
-
-// JSX
-;<img src={logo} className="nav-logo" alt="backroads" />
-```
-
-#### Smooth Scroll
-
-- html/css feature
-
-```html
-<!-- link -->
-<a href="#services"> services </a>
-<!-- element -->
-<section id="services"></section>
-```
-
-```css
-html {
-  scroll-behavior: smooth;
-}
-.section {
-  /* navbar height */
-  scroll-margin-top: 4rem;
-}
-```
 
 #### Page Links
 
@@ -205,126 +128,6 @@ import { pageLinks } from '../data'
 }
 ```
 
-#### Nav Icons (social-links)
-
-- repeat the same steps (as with page links)
-- add rel='noreferrer'
-
-```js
-{
-  socialLinks.map((link) => {
-    const { id, href, icon } = link
-    return (
-      <li key={id}>
-        <a href={href} target="_blank" rel="noreferrer" className="nav-icon">
-          <i className={icon}></i>
-        </a>
-      </li>
-    )
-  })
-}
-```
-
-#### Hero
-
-- change title or text (optional)
-- fix the image (path in css)
-
-#### About
-
-- fix the image (hint - just like with logo in the navbar)
-
-#### Section Title
-
-- in components create Title.js
-- get the structure from one of the sections
-- setup two props
-- replace in About, Services, Tours
-
-```js
-const Title = ({ title, subTitle }) => {
-  return (
-    <div className="section-title">
-      <h2>
-        {title} <span>{subTitle}</span>
-      </h2>
-    </div>
-  )
-}
-export default Title
-```
-
-About.js
-
-```js
-// import
-import Title from './Title'
-
-// display
-;<Title title="about" subTitle="us" />
-```
-
-#### Services
-
-- refactor repeating code (hint - just like with page and social links)
-  - setup data, export/import, iterate
-
-data.js
-
-```js
-export const services = [
-  {
-    id: 1,
-    icon: 'fas fa-wallet fa-fw',
-    title: 'saving money',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Asperiores, officia',
-  },
-  // rest of the objects
-]
-```
-
-Services.js
-
-```js
-import Title from './Title'
-import { services } from '../data'
-const Services = () => {
-  return (
-    <section className="section services" id="services">
-      <Title title="our" subTitle="services" />
-
-      <div className="section-center services-center">
-        {services.map((service) => {
-          const { id, icon, title, text } = service
-          return (
-            <article className="service" key={id}>
-              <span className="service-icon">
-                <i className={icon}></i>
-              </span>
-              <div className="service-info">
-                <h4 className="service-title">{title}</h4>
-                <p className="service-text">{text}</p>
-              </div>
-            </article>
-          )
-        })}
-      </div>
-    </section>
-  )
-}
-export default Services
-```
-
-#### Tours
-
-- refactor repeating code
-
-#### Footer
-
-- refactor repeating code
-- re-use page and social links
-- in the <span id="date">provide current year (hint - {})
-
 #### Alternative Approach (optional)
 
 - in components create PageLinks.js
@@ -333,17 +136,7 @@ export default Services
 - "gotcha"
   - the more "moving parts" you will have the harder it's going to be to manage
   - my personal preference, if possible just use data
-
-#### Challenge (optional)
-
-- create more components (essentially, split up the code more)
-- find all map methods and move elements to separate components
-- By the end of the video you should have four additional components
-  - Tour.js
-  - Service.js
-  - SocialLink.js
-  - PageLink.js
-
+  - 
 #### Continuous Deployment
 
 - fix warnings (About Section)
@@ -373,11 +166,6 @@ export default Services
       git remote add origin git@github.com:your-profile/repo-name.git
       git branch -M main
       git push -u origin main
-
-#### Benefits
-
-- don't need to keep project locally
-- automatic builds
 
 #### Warnings "Gotcha"
 
