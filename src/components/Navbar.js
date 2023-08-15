@@ -1,11 +1,12 @@
 import logo from '../images/logo.svg'
-import { pageLinks } from '../data'
-import { socialLinks } from '../data'
+import PageLinks from './PageLinks'
+import SocialLinks from './SocialLinks'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-center">
+        {/* Nav header */}
         <div className="nav-header">
           <img src={logo} className="nav-logo" alt="backroads" />
           <button type="button" className="nav-toggle" id="nav-toggle">
@@ -13,34 +14,11 @@ const Navbar = () => {
           </button>
         </div>
 
-        <ul className="nav-links" id="nav-links">
-          {pageLinks.map((link) => {
-            return (
-              <li key={link.id}>
-                <a href={link.href} className="nav-link">
-                  {link.text}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+        {/* Nav sections */}
+        <PageLinks parentClass="nav-links" itemClass="nav-link"></PageLinks>
 
-        <ul className="nav-icons">
-          {socialLinks.map((link) => {
-            return (
-              <li key={link.id}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="nav-icon"
-                >
-                  <i className={link.icon}></i>
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+        {/* Nav icons */}
+        <SocialLinks parentClass="nav-icons" itemClass="nav-icon"></SocialLinks>
       </div>
     </nav>
   )
